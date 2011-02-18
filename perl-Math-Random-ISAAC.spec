@@ -1,5 +1,5 @@
 %define upstream_name    Math-Random-ISAAC
-%define upstream_version 1.003
+%define upstream_version 1.004
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
