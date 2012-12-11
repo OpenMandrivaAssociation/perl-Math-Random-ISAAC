@@ -1,21 +1,21 @@
 %define upstream_name    Math-Random-ISAAC
 %define upstream_version 1.004
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 3
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	4
 
-Summary:    Pure Perl port of the ISAAC PRNG algorithm
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Math/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Pure Perl port of the ISAAC PRNG algorithm
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Math/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Math::Random::ISAAC::XS)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Test::NoWarnings)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Math::Random::ISAAC::XS)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Test::NoWarnings)
+BuildArch:	noarch
 
 %description
 As with other Pseudo-Random Number Generator (PRNG) algorithms like the
@@ -39,24 +39,34 @@ attacks have been found to date.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc README Changes LICENSE META.yml
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
 
+%changelog
+* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 1.4.0-3mdv2011.0
++ Revision: 657339
+- rebuild for updated spec-helper
+
+* Mon Feb 28 2011 Funda Wang <fwang@mandriva.org> 1.4.0-2
++ Revision: 640771
+- rebuild to obsolete old packages
+
+* Fri Feb 18 2011 Guillaume Rousse <guillomovitch@mandriva.org> 1.4.0-1
++ Revision: 638500
+- update to new version 1.004
+
+* Fri Jan 28 2011 Guillaume Rousse <guillomovitch@mandriva.org> 1.3.0-1
++ Revision: 633684
+- import perl-Math-Random-ISAAC
 
