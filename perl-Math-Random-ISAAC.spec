@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	4
+Release:	5
 
 Summary:	Pure Perl port of the ISAAC PRNG algorithm
 License:	GPL+ or Artistic
