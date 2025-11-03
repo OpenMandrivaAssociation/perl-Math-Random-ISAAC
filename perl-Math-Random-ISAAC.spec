@@ -13,6 +13,7 @@ BuildArch:	noarch
 
 BuildRequires:	perl
 BuildRequires:	perl(Test::NoWarnings)
+BuildRequires:	perl(ExtUtils::MakeMaker)
 
 %description
 As with other Pseudo-Random Number Generator (PRNG) algorithms like the Mersenne Twister (see Math::Random::MT), this algorithm is designed to take some seed information and produce seemingly random results as output.
